@@ -16,7 +16,7 @@ class Chess:
                 "(ID INTEGER PRIMARY KEY,"
                 "lastname_s TEXT,"
                 "Date_of_Birth INTEGER,"
-                "capital TEXT,"
+                "country TEXT,"
                 "sports_category TEXT,"
                 "Name TEXT,"
                 "the_date_of_the INTEGER,"
@@ -36,20 +36,20 @@ def view(self):
   rows = self.cur.fetchall()
   return rows
 
-def insert(self, lastname_s, Date_of_Birth, capital,sports_category,Name,the_date_of_the,busy_place):
+def insert(self, lastname_s, Date_of_Birth, country,sports_category,Name,the_date_of_the,busy_place):
   # добавить запись
   self.cur.execute("INSERT INTO Sportman "
                   "VALUES (NULL, ?, ?, ?,?,?,?,?)",
-                  (lastname_s, Date_of_Birth, capital,sports_category,Name,the_date_of_the,busy_place,))
+                  (lastname_s, Date_of_Birth, country,sports_category,Name,the_date_of_the,busy_place,))
   self.con.commit()
 
-def update(self, id, lastname_s, Date_of_Birth, capital,sports_category,Name,the_date_of_the,busy_place):
+def update(self, id, lastname_s, Date_of_Birth, country,sports_category,Name,the_date_of_the,busy_place):
     # редактирование записи
     self.cur.execute("UPDATE Sportman SET "
-                    "lastname_s=?, Date_of_Birth=?, capital=?,sports_category=?,Name=?,the_date_of_the=?,busy_place=? "
+                    "lastname_s=?, Date_of_Birth=?, country=?,sports_category=?,Name=?,the_date_of_the=?,busy_place=? "
                     "WHERE ID = ?",
                     (lastname_s, Date_of_Birth,
-                    capital,sports_category,Name,the_date_of_the,busy_place, id,))
+                    country,sports_category,Name,the_date_of_the,busy_place, id,))
     self.con.commit()
 
 def delete(self, id):
@@ -59,7 +59,7 @@ def delete(self, id):
     self.con.commit()
 
 def search(self, lastname_s):
-    self.cur.execute("SELECT Date_of_Birth, capital,sports_category,Name,the_date_of_the,busy_place FROM Sportman "
+    self.cur.execute("SELECT Date_of_Birth, country,sports_category,Name,the_date_of_the,busy_place FROM Sportman "
                     "WHERE lastname_s=?", (lastname_s,))
     rows = self.cur.fetchall()
     return rows
