@@ -17,14 +17,14 @@ index = list1.curselection()[0]  # this is the id of the selected tuple
 # получаем значение выделенной записи
 selected_tuple = list1.get(index)
 # удаляем то, что было раньше в поле ввода
-lastname_s_entry.delete(0, END)
+lastname_ss_entry.delete(0, END)
 # и добавляем туда текущее значение названия покупки
-lastname_s_entry.insert(END, selected_tuple[1])
+lastname_ss_entry.insert(END, selected_tuple[1])
 # делаем то же самое с другими полями
 Date_of_Birth_entry.delete(0, END)
 Date_of_Birth_entry.insert(END, selected_tuple[2])
-capital_entry.delete(0, END)
-capital_entry.insert(END, selected_tuple[3])
+country_entry.delete(0, END)
+country_entry.insert(END, selected_tuple[3])
 sports_category_entry.delete(0, END)
 sports_category_entry.insert(END, selected_tuple[4])
 Name_entry.delete(0, END)
@@ -54,7 +54,7 @@ def search_command():
 # очищаем список в приложении
 list1.delete(0, END)
 # находим все записи по названию покупки
-for row in database_Chess.search(lastname_s_text.get()):
+for row in database_Chess.search(lastname_ss_text.get()):
 # и добавляем их в список в приложение
 list1.insert(END, row)
 
@@ -64,9 +64,9 @@ def add_command():
 
 
 # добавляем запись в БД
-database_Chess.insert(lastname_s_text.get(),
+database_Chess.insert(lastname_ss_text.get(),
                          Date_of_Birth_text.get(),
-                         capital_text.get(),
+                         country_text.get(),
                          sports_category_text.get(),
                          Name_text.get(),
                          the_date_of_the_text.get(),
@@ -91,9 +91,9 @@ def update_command():
 
 # обновляем данные в БД о выделенной записи
 database_Chess.update(selected_tuple[0],
-                         lastname_s_text.get(),
+                         lastname_ss_text.get(),
                          Date_of_Birth_text.get(),
-                         capital_text.get(),
+                         country_text.get(),
                          sports_category_text.get(),
                          Name_text.get(),
                          the_date_of_the_text.get(),
@@ -120,16 +120,16 @@ frame = ttk.Frame(borderwidth=1, relief=SOLID, padding=4)
 # создаём надписи для полей ввода и размещаем их по сетке
 l1 = Label(frame, text="Фамилия спортсмена")
 l1.pack()
-lastname_text = StringVar()
-lastname_entry = ttk.Entry(frame, textvariable=lastname_s_text)
-lastname_entry.pack()
+lastname_s_text = StringVar()
+lastname_s_entry = ttk.Entry(frame, textvariable=lastname_s_text)
+lastname_s_entry.pack()
 frame.grid(row=0, column=0)
 frame = ttk.Frame(borderwidth=1, relief=SOLID, padding=4)
 l2 = Label(frame, text="Дата рождения")
 l2.pack()
-firstname_text = StringVar()
-firstname_entry = ttk.Entry(frame, textvariable=Date_of_Birth_text)
-firstname_entry.pack()
+Date_of_Birth_text = StringVar()
+Date_of_Birth_entry = ttk.Entry(frame, textvariable=Date_of_Birth_text)
+Date_of_Birth_entry.pack()
 frame.grid(row=0, column=1)
 frame = ttk.Frame(borderwidth=1, relief=SOLID, padding=4)
 l3 = Label(frame, text="Страна")
@@ -141,16 +141,16 @@ frame.grid(row=0, column=2)
 frame = ttk.Frame(borderwidth=1, relief=SOLID, padding=4)
 l4 = Label(frame, text="спортивный разряд")
 l4.pack()
-firstname_text = StringVar()
-firstname_entry = ttk.Entry(frame, textvariable=sports_category_text)
-firstname_entry.pack()
+sports_category_text = StringVar()
+sports_category_entry = ttk.Entry(frame, textvariable=sports_category_text)
+sports_category_entry.pack()
 frame.grid(row=0, column=3)
 frame = ttk.Frame(borderwidth=1, relief=SOLID, padding=4)
 l5 = Label(frame, text="Имя")
 l5.pack()
-firstname_text = StringVar()
-firstname_entry = ttk.Entry(frame, textvariable=Name_text)
-firstname_entry.pack()
+Name_text = StringVar()
+Name_entry = ttk.Entry(frame, textvariable=Name_text)
+Name_entry.pack()
 frame.grid(row=1, column=0)
 frame = ttk.Frame(borderwidth=1, relief=SOLID, padding=4)
 # создаём список, где появятся данные, и сразу определяем его размеры в окне
@@ -158,16 +158,16 @@ list1 = Listbox(frame, height=25, width=65)
 list1.pack(side=LEFT, fill=BOTH, expand=1)
 l6 = Label(frame, text="дата проведения")
 l6.pack()
-firstname_text = StringVar()
-firstname_entry = ttk.Entry(frame, textvariable=the_date_of_the_text)
-firstname_entry.pack()
+the_date_of_the_text = StringVar()
+the_date_of_the_entry = ttk.Entry(frame, textvariable=the_date_of_the_text)
+the_date_of_the_entry.pack()
 frame.grid(row=1, column=1)
 frame = ttk.Frame(borderwidth=1, relief=SOLID, padding=4)
 l7 = Label(frame, text="занятое место")
 l7.pack()
-firstname_text = StringVar()
-firstname_entry = ttk.Entry(frame, textvariable=busy_place_text)
-firstname_entry.pack()
+busy_place_text = StringVar()
+busy_place_entry = ttk.Entry(frame, textvariable=busy_place_text)
+busy_place_entry.pack()
 frame.grid(row=1, column=2)
 frame = ttk.Frame(borderwidth=1, relief=SOLID, padding=4)
 # создаём список, где появятся данные, и сразу определяем его размеры в окне
